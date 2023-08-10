@@ -12,7 +12,7 @@ export default function NavBar() {
   ]
 
   return (
-    <header style={{ backgroundColor: "#EBEBEB" }} className="w-[full] h-[64px] px-20 flex justify-between items-center mt-[32px]">
+    <header style={{ backgroundColor: "#EBEBEB" }} className="w-[full] h-[64px] px-6 flex justify-between items-center mt-[32px]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

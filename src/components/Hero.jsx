@@ -13,14 +13,17 @@ export default function Hero() {
     }, [])
 
     return (
-        <div className="w-3/4 mt-[100px] flex justify-between items-center mx-auto">
-            <article className="flex-col w-1/3">
-                <h2 className="text-3xl font-bold">Find the perfect destination</h2>
+        <div className="w-[80vw] mt-[354px] flex flex-col justify-between items-center mx-auto
+            lg:flex-row">
+            <article className="flex-col w-[80vw] ms-auto self-center
+                lg:w-1/4">
+                <h2 className="text-[24px] font-bold">Find the perfect destination</h2>
                 <p className="mt-5">Our app will help you find the perfect path for your next trip. With an easy-to-use interface and a host of itinerary options, planning your next trip has never been easier.</p>
-                <input onClick={() => setShow(!show)} type="button" value={show ? "Hide" : "View More"} className="w-[246px] text-white font-bold py-2 px-4 my-3 rounded" style={{ backgroundColor: '#4F46E5' }} />
+                <input onClick={() => setShow(!show)} type="button" value={show ? "Hide" : "View More"} className="w-[200px] text-white font-bold py-2 px-4 my-3 rounded" style={{ backgroundColor: '#4F46E5' }} />
             </article>
-            <article className="flex-col w-1/4 items-center">
-                {show && <Carousel data={data} />}
+            <article className="w-[80vw] mx-auto mt-[100px] items-center self-center
+                lg:w-1/2 lg:flex-row lg:mt-[0px]">
+                {show ? <Carousel data={data} /> : <h1 className="text-[24px] text-white hidden sm:flex"></h1>}
             </article>
         </div>
     )
