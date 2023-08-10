@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 export default function NavLayout() {
   return (
-    <div className="w-full min-h-screen bg-red-500 flex flex-col">
+    <div style={{backgroundColor:"#EBEBEB"}} className="w-full min-h-screen flex flex-col">
         <NavBar />
         {/* contenido dinamico de la interfaz */}
         <Outlet />

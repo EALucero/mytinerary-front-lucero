@@ -33,7 +33,7 @@ export default function Carrousel({ data }) {
                 {data.slice(counter, counterTo).map((e, i) => (
                     <CardPolaroid
                         key={i}
-                        src={e.photo}
+                        src={e.photo? e.photo : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/1156px-Picture_icon_BLACK.svg.png"}
                         alt={e.id}
                         text={e.city}
                         id={e.id}
