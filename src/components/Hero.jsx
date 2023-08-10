@@ -13,7 +13,7 @@ export default function Hero() {
     }, [])
 
     return (
-        <div className="w-[80vw] mt-[354px] flex flex-col justify-between items-center mx-auto
+        <div className="w-[80vw] mt-[200px] flex flex-col justify-between items-center mx-auto
             lg:flex-row">
             <article className="flex-col w-[80vw] ms-auto self-center
                 lg:w-1/4">
