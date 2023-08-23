@@ -1,4 +1,4 @@
-import logo from "../../public/img/myTineraryLogo.png"
+import logo from "/img/myTineraryLogo.png"
 import { useState } from "react";
 import Display from "./Display";
 import Label from "./Label";
@@ -12,7 +12,7 @@ export default function NavBar() {
   ]
 
   return (
-    <header style={{ backgroundColor: "#EBEBEB" }} className="w-[full] h-[64px] px-6 flex justify-between items-center mt-[32px]">
+    <header className="w-[full] h-[64px] z-10 px-6 flex justify-between items-center mt-[32px] bg-opacity-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

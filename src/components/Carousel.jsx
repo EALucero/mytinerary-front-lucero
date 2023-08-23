@@ -16,6 +16,8 @@ export default function Carrousel({ data }) {
         }   
     }
 
+    console.log(data.length);
+
     function prev_slide() {
         if (counter <= 0) {
             setCounter(data.length - 4);
@@ -35,9 +37,9 @@ export default function Carrousel({ data }) {
                     <CardPolaroid
                         key={i}
                         src={e.photo? e.photo : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/1156px-Picture_icon_BLACK.svg.png"}
-                        alt={e.id}
+                        alt={e._id}
                         text={e.city}
-                        id={e.id}
+                        id={e._id}
                     />
                 ))}
             </div>

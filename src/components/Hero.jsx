@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Carousel from "./Carousel"
+import apiUrl from "../apiUrl";
 
 export default function Hero() {
     const [show, setShow] = useState();
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios('/data.json')
-            .then((res) => setData(res.data))
+        axios(apiUrl + 'cities/carousel')
+            .then((res) => setData(res.data.data_carousel))
             .catch(err => console.log(err))
     }, [])
 
     return (
-        <div className="w-[80vw] mt-[200px] flex flex-col justify-between items-center mx-auto
+        <div className="w-[80vw] mt-[100px] flex flex-col justify-between items-center mx-auto
             lg:flex-row">
             <article className="flex-col w-[80vw] ms-auto self-center
                 lg:w-1/4">
@@ -23,7 +24,7 @@ export default function Hero() {
             </article>
             <article className="w-[80vw] mx-auto mt-[100px] items-center self-center
                 lg:w-1/2 lg:flex-row lg:mt-[0px]">
-                {show ? <Carousel data={data} /> : <h1 className="text-[24px] text-white hidden sm:flex"></h1>}
+                {!show ? <Carousel data={data} /> : <h1 className="text-[24px] text-white hidden sm:flex"></h1>}
             </article>
         </div>
     )
