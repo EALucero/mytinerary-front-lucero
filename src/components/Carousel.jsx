@@ -16,8 +16,6 @@ export default function Carrousel({ data }) {
         }   
     }
 
-    console.log(data.length);
-
     function prev_slide() {
         if (counter <= 0) {
             setCounter(data.length - 4);

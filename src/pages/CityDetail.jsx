@@ -13,8 +13,6 @@ export default function CityDetail() {
       .catch(err => console.log(err))
   }, [])
 
-  console.log(city);
-
   return (
     <div className="w-[full] mt-[4.3vh] flex flex-col justify-between items-center mx-auto 
     lg: flex-row">
