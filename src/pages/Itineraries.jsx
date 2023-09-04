@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Itineraries() {
   return (
-    <div>Itineraries</div>
+    <div>Itineraries under construction</div>
   )
 }

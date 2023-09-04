@@ -28,7 +28,7 @@ export default function Carrousel({ data }) {
 
     return (
         <div className="flex justify-center items-center">
-            <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" onClick={prev_slide} />
+            <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" onClick={prev_slide} size="w-[50px] h-[50px] lg:w-[200px]" />
             <div className="w-[full] flex flex-col flex-wrap justify-center mt-5
                 lg:flex-row lg:mt-0">
                 {data.slice(counter, counterTo).map((e, i) => (
@@ -41,7 +41,7 @@ export default function Carrousel({ data }) {
                     />
                 ))}
             </div>
-            <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5" onClick={next_slide} />
+            <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5" onClick={next_slide} size="w-[50px] h-[50px] lg:w-[200px]" />
         </div>
     )
 }
