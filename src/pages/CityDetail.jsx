@@ -14,7 +14,7 @@ export default function CityDetail() {
     dispatch(read_city({ id: city_id }));
   }, []);
 
-  console.log(city.admin_id);
+  //console.log(city.admin_id);
 
   return (
     <div className="w-[full] mt-[4.3vh] flex flex-col justify-between items-center mx-auto 
