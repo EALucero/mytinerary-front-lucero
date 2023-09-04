@@ -13,7 +13,7 @@ export default function CardCity({ src, alt, text, id }) {
                 </svg>
                 <p>{text[1]}</p>
             </div>     
-            <Anchor to={id} className="w-[90px] text-[14px] absolute text-white text-center py-1 px-2 mt-48 ml-1 rounded lg:mt-36 lg:ml-2 xl:mt-28" style={{ backgroundColor: '#4F46E5' }}>View More</Anchor>   
+            <Anchor to={id} className="w-[90px] text-[14px] absolute text-white text-center py-1 px-2 mt-48 ml-1 rounded lg:mt-36 lg:ml-2 2xl:mt-28" style={{ backgroundColor: '#4F46E5' }}>View More</Anchor>   
         </div>
         
     )

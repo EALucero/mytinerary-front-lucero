@@ -1,23 +1,24 @@
-import { useState, useEffect, useRef } from "react"
-import axios from 'axios'
-import apiUrl from '../apiUrl'
-import CardCity from '../components/CardCity'
+import { useState, useEffect, useRef } from "react";
+import CardCity from "../components/CardCity";
+import { useSelector, useDispatch } from "react-redux";
+import city_actions from "../store/actions/cities";
+const { read_cities } = city_actions;
 
 export default function Cities() {
-  const [cities, setCities] = useState([])
-  const [reEffect, setReEffect] = useState(true)
-  const text = useRef()
-
+  const cities = useSelector((store) => store.cities.cities);
+  const [reEffect, setReEffect] = useState(true);
+  const text = useRef();
+  const dispatch = useDispatch();
+  
   useEffect(() => {
-    axios(apiUrl + 'cities?city=' + text.current.value)
-      .then(res => setCities(res.data.response))
-      .catch(err => console.log(err))
-  }, [reEffect])
+    dispatch(read_cities({ text: text.current?.value }));
+  }, [reEffect]);
 
   function handleFilter() {
-    console.log(text.current.value);
-    setReEffect(!reEffect)
+    setReEffect(!reEffect);
   }
+
+  console.log(cities);
 
   return (
     <main className="grow flex items-center">
@@ -30,11 +31,12 @@ export default function Cities() {
         </article>
         <input className="w-[340px] my-10 p-2 pl-10 rounded-full bg-black lg:w-[680px] text-white" ref={text} type="text" name="text" id="text" onKeyUp={handleFilter} placeholder="🔍 Search your city" />
         <article className="w-[full] flex flex-col flex-wrap justify-center mt-5
-                lg:flex-row lg:mt-[0px]">
-          {cities.map(e => <CardCity key={e._id} src={e.photo} alt={e._id} text={[e.city, e.country]} id={e._id} />)}
+          lg:flex-row lg:mt-[0px]">
+          {cities.map((e) => (
+            <CardCity key={e._id} src={e.photo} alt={e._id} text={[e.city, e.country]} id={e._id} />
+          ))}
         </article>
       </div>
     </main>
-
   )
 }

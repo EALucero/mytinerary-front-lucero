@@ -8,6 +8,8 @@ import MainLayout from "./layouts/MainLayout";
 import NotFound from "./pages/NotFound";
 import Itineraries from "./pages/Itineraries";
 import NavLayout from './layouts/NavLayout';
+import FormSignUp from "./pages/FormSignUp";
+import FormSignIn from "./pages/FormSignIn";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +22,9 @@ const router = createBrowserRouter([
             { path: "/signin", element: <SignIn /> },
             { path: "/signup", element: <SignUp /> },
             { path: "/cities", element: <Cities /> },
-            { path: "/cities/:id", element: <CityDetail /> },
+            { path: "/cities/:city_id", element: <CityDetail /> },
+            { path: "/auth/signup", element: <FormSignUp /> },
+            { path: "/auth/signin", element: <FormSignIn /> },
             { path: "/*", element: <NotFound /> },
         ],
     },
