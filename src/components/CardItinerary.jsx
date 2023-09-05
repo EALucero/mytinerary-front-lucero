@@ -20,7 +20,9 @@ export default function CardItinerary({ text, src, alt, price, duration, tags, i
         []
     ) */
 
-    //console.log(counter);
+    const handleLike = () => setCounter(counter + 1);
+    const handleDontLike = () => setCounter(counter - 1);
+    console.log(counter);
 
 
     return (
@@ -29,7 +31,7 @@ export default function CardItinerary({ text, src, alt, price, duration, tags, i
             <img className="w-[100vw] h-[25vh] sm:w-[85vw] sm:h-[30vh] md:w-[70vw] md:h-[35vh] lg:w-[55vw] lg:h-[40vh]" src={src} alt={alt} />
             <div className="w-full flex justify-between px-2 my-2 text-black">
                 <div className="flex">
-                    <Like touch={like} onClick={() => setLike(!like) && counter == 0 ? setCounter(1) : setCounter(0)} />
+                    <Like touch={like} onClick={() => setLike(!like) && (counter == 0 ? handleLike() : handleDontLike())} />
                     <p>{counter}</p>
                 </div>
                 <Arrow direction={change ? "M4.5 15.75l7.5-7.5 7.5 7.5" : "M19.5 8.25l-7.5 7.5-7.5-7.5"} onClick={() => setChange(!change)} size="w-[25px] h-[25px] lg:w-[50px]" />
@@ -49,7 +51,7 @@ export default function CardItinerary({ text, src, alt, price, duration, tags, i
                         <tbody>
                             <tr>
                                 <td><User data={admin} /></td>
-                                <td>{tags}</td>
+                                <td><div className="flex-col flex-wrap overflow-wrap: break-all">{tags}</div></td>
                                 <td>{duration} hs</td>
                                 <td><Money price={price} /></td>
                             </tr>
