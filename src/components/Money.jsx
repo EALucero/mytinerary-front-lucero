@@ -10,7 +10,7 @@ export default function Money({price}) {
     }
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col sm:flex-row">
         {papers}
     </div>
   )
