@@ -1,16 +1,47 @@
 import logo from "/img/myTineraryLogo.png"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Display from "./Display";
 import Label from "./Label";
+import { useSelector, useDispatch } from "react-redux";
+import user_actions from "../store/actions/users";
+const { signout } = user_actions;
 
 export default function NavBar() {
+  const navigate = useNavigate();
   let [show, setShow] = useState(false);
+  let photo = useSelector((store) => store.users.user?.photo);
+  let dispatch = useDispatch();
+
   let options = [
+    { to: "/", title: "Home", show: true },
+    { to: "/cities", title: "Cities", show: true },
+    {
+      to: "/auth/signin",
+      title: "Log In",
+      show: photo ? false : true,
+    },
+    {
+      to: "/profile",
+      title: "Profile",
+      show: photo ? true : false,
+    },
+    {
+      title: "Sign Out",
+      show: photo ? true : false,
+      onClick: () => {
+        dispatch(signout());
+        navigate("/");
+      },
+    },
+  ];
+  /* let [show, setShow] = useState(false);
+    let options = [
     { to: "/", title: "Home" },
     { to: "/cities", title: "Cities" },
-    { to: "/signin", title: "Log In", backgroundColor: "#4F46E5", color: "white", height: "64px" },
+    { to: "/auth/signin", title: "Log In", backgroundColor: "#4F46E5", color: "white", height: "64px" },
   ]
-
+ */
   return (
     <header className="w-[full] h-[64px] z-10 px-6 flex justify-between items-center mt-[32px] bg-opacity-0">
       <svg
@@ -50,6 +81,7 @@ export default function NavBar() {
               strokeLinejoin="round" 
               d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
           </svg>
+          {/* {show && <Label options={options} />} */}
           <Label options={options} />
         </div>
       </div>

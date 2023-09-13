@@ -22,7 +22,7 @@ export default function Cities() {
 
   return (
     <main className="grow flex items-center">
-      <img className="w-full h-[50vh] absolute top-[0px]" src="/img/backgroundSign.jpg" alt="" />
+      <img className="w-full h-[50vh] absolute top-[0px]" src="/img/index.jpg" alt="background" />
       <div className="w-[80vw] mt-[40vh] flex flex-col justify-between items-center mx-auto">
         <article className="w-[80vw] absolute top-[20vh] mx-auto text-center text-white font-bold font-outline-2
                 lg:w-1/3 lg:flex-row lg:mt-[0px]">

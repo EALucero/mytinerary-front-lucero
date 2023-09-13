@@ -10,6 +10,8 @@ import Itineraries from "./pages/Itineraries";
 import NavLayout from './layouts/NavLayout';
 import FormSignUp from "./pages/FormSignUp";
 import FormSignIn from "./pages/FormSignIn";
+import Profile from "./pages/Profile";
+/* import Activities from "./pages/Activities"; */
 
 const router = createBrowserRouter([
     {
@@ -21,6 +23,7 @@ const router = createBrowserRouter([
             { path: "/home", element: <Home /> },
             { path: "/signin", element: <SignIn /> },
             { path: "/signup", element: <SignUp /> },
+            { path: "/profile", element: <Profile /> },
             { path: "/cities", element: <Cities /> },
             { path: "/cities/:city_id", element: <CityDetail /> },
             { path: "/auth/signup", element: <FormSignUp /> },
@@ -32,13 +35,18 @@ const router = createBrowserRouter([
         path: "/",
         element: <NavLayout />,
         children: [{
-            path: "/layout", element: <Itineraries />
+            path: "/layout", element: <Itineraries />,
+            /* path: "/layout", element: <Activities /> */
         }],
     },
     {
         path: "/itineraries",
         element: <Itineraries />,
     },
+    /* {
+        path: "/activities",
+        element: <Activities />,
+    }, */
 ]);
 
 export default router;

@@ -1,109 +1,80 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
-import { Link as Anchor } from "react-router-dom"
+import SignUp from "../components/SignUp";
+import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import user_actions from "../store/actions/users";
+const { read_users } = user_actions
 
 export default function Form() {
+  const navigate = useNavigate()
   const name = useRef("");
   const lastName = useRef("");
   const country = useRef("");
   const photo = useRef("");
   const mail = useRef("");
   const password = useRef("");
+  const [reload, setReload] = useState(false);
+  const dispatch = useDispatch()
+
+  useEffect(
+    () => { dispatch(read_users()) },
+    [reload]
+  )
 
   async function handleSignUp() {
     try {
+      let other = "https://www.cinemascomics.com/wp-content/uploads/2020/06/poder-darth-vader.jpg";
+
       let data = {
-        name: name.current.value,
-        lastName: lastName.current.value,
-        country: country.current.value,
-        photo: photo.current.value,
         mail: mail.current.value,
         password: password.current.value,
-      };
+        name: name.current.value,
+        lastName: lastName.current.value,
+        photo: photo.current.value != "" ? value : other,
+        country: country.current.value,
+      }
+
+      if (photo.current.value) {
+        data.photo = photo.current.value
+      }
 
       await axios.post(
-        apiUrl + "users/signup", //url del endpoint de creacion
-        data //objeto con los datos para crear
+        apiUrl + "auth/register",
+        data
       );
 
-      console.log(data);
+      Swal.fire({
+        title: "User Registered",
+        icon: "success"
+      })
+
+      setReload(!reload)
+      //console.log(data);
+      navigate('/auth/signin')
     } catch (error) {
-      console.log(error);
+      let faild = error.response.data.messages
+      //console.log(error)
+
+      Swal.fire({
+        title: 'User registration failed!',
+        icon: 'error',
+        html: faild.map(each => `<p>${each}</p>`).join(''),
+      })
     }
   }
 
   return (
-    <form className="flex flex-col grow justify-evenly items-center w-4/5">
-      <input
-        ref={name}
-        type="text"
-        className="w-4/5 py-4 text-center"
-        name="name"
-        id="name"
-        defaultValue=""
-        placeholder="Type Name"
-      />
-      <input
-        ref={lastName}
-        type="text"
-        className="w-4/5 py-4 text-center"
-        name="lastName"
-        id="lastName"
-        defaultValue=""
-        placeholder="Type Last Name"
-      />
-      <input
-        ref={country}
-        type="text"
-        className="w-4/5 py-4 text-center"
-        name="country"
-        id="country"
-        defaultValue=""
-        placeholder="Type Country"
-      />
-      <input
-        ref={photo}
-        type="text"
-        className="w-4/5 py-4 text-center"
-        name="photo"
-        id="photo"
-        defaultValue=""
-        placeholder="Type Photo"
-      />
-      <input
-        ref={mail}
-        type="mail"
-        className="w-4/5 py-4 text-center"
-        name="mail"
-        id="mail"
-        defaultValue=""
-        placeholder="Type Mail"
-      />
-      <input
-        ref={password}
-        type="password"
-        className="w-4/5 py-4 text-center"
-        name="password"
-        id="password"
-        defaultValue=""
-        placeholder="Type Password"
-      />
-      <input
-        type="button"
-        className="bg-red-400 text-white w-4/5 py-4 text-center cursor-pointer"
-        value="Sign Up!"
-        onClick={handleSignUp}
-      />
-      <p>
-        Already have an account?{" "}
-        <Anchor
-          className="text-[20px] font-bold text-red-800 cursor-pointer"
-          to='/auth/signin'
-        >
-          Sign in
-        </Anchor>
-      </p>
-    </form>
+    <main className="grow flex items-center">
+      <img className="w-full h-[120vh] absolute top-[0px]" src="/img/backgroundLog.jpg" alt="" />
+      <div className="flex z-10 gap-10 p-2 rounded justify-evenly items-center m-auto">
+        <article className="hidden md:flex md:w-[32vw] md:z-10">
+          <h2 className="w-[274px] h-[64px] text-[36px] text-white font-bold font-outline-1">My Tinerary</h2>
+        </article>
+        <SignUp mail={mail} password={password} name={name} lastName={lastName} photo={photo} country={country} func={handleSignUp} />
+      </div>
+    </main>
   );
 }

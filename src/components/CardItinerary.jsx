@@ -1,11 +1,12 @@
+import CardActivity from "./CardActivitiy"
 import { useState, useEffect } from "react";
 import Arrow from "./Arrow";
 import Like from "./Like";
 import Money from "./Money";
 import User from "./User";
-/* import { useDispatch } from "react-redux";
-import user_actions from "../store/actions/users";
-const { read_user } = user_actions */
+import { useSelector, useDispatch } from "react-redux";
+import activities_actions from "../store/actions/activities";
+const { read_activities_from_itinerary } = activities_actions
 
 export default function CardItinerary({ text, src, alt, price, duration, tags, id, admin }) {
     let [change, setChange] = useState(false);
@@ -13,17 +14,21 @@ export default function CardItinerary({ text, src, alt, price, duration, tags, i
     let [like, setLike] = useState(false);
     let [show, setShow] = useState(false)
 
-    /* const dispatch = useDispatch();
+    const activities = useSelector(store => store.activities.activities_from_itinerary)
+
+    const dispatch = useDispatch()
 
     useEffect(
-        () => {dispatch(read_user())},
-        []
-    ) */
+        () => {
+            /* console.log(id);
+            console.log(text);
+            console.log(activities) */
+            dispatch(read_activities_from_itinerary({ itinerary_id: id }))
+        }, []
+    )
 
     const handleLike = () => setCounter(counter + 1);
     const handleDontLike = () => setCounter(counter - 1);
-    console.log(counter);
-
 
     return (
         <div className="w-full flex flex-col items-center p-2 my-5 bg-white text-black rounded md:w-[60vw] lg:w-[40vw]">
@@ -60,16 +65,15 @@ export default function CardItinerary({ text, src, alt, price, duration, tags, i
 
                     <span onClick={() => setShow(!show)} className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 mb-2 rounded cursor-pointer w-[150px] text-center">{show ? ("hide") : ("view more")}</span>
                     {
-                        show && 
-                        <div className="h-[10vh]">
-                            <p className="mt-10">under construction</p>
-                        </div>   
+                        show &&
+                        <div className="w-full flex flex-wrap items-center justify-evenly">
+                            {activities[1].map((e, i) => (
+                                <CardActivity key={i} text={e.name} src={e.photo} id={e._id} />
+                            ))}
+                        </div>
                     }
                 </>
-
-
             }
-
         </div>
     )
 }
