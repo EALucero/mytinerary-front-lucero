@@ -1,4 +1,4 @@
-import logo from "/img/myTineraryLogo.png"
+import logo from "/img/MyTineraryLogo.png"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Display from "./Display";
