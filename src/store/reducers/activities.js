@@ -13,7 +13,8 @@ const activity_reducer = createReducer(
         (state, action) => {
             let new_state = {
                 ...state,
-                activities_from_itinerary: [action.payload.itinerary_id, action.payload.activities]
+                /* activities_from_itinerary: [action.payload.itinerary_id, action.payload.activities] */
+                activities_from_itinerary: action.payload.itinerary_id
             }
             return new_state
         }
