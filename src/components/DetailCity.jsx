@@ -24,7 +24,7 @@ export default function DetailCity({ src, alt, text, id, admin }) {
         {
           itineraries.length > 0 ?
             <span onClick={() => setShow(!show)} className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer w-[150px] text-center">{show ? ("hide") : ("itineraries")}</span>
-            : <div className={show? "hidden": "flex flex-col items-center"}><img className="w-[10vw]" src="https://i.gifer.com/2wVe.gif" alt="notItinerary" /><p className="text-[18px] text-black">No hay itinerarios aún para esta ciudad</p></div>
+            : <div className={show? "hidden": "flex flex-col items-center"}><img className="w-[40vw]" src="https://i.gifer.com/2wVe.gif" alt="notItinerary" /><p className="text-[18px] text-black">No hay itinerarios aún para esta ciudad</p></div>
         }
         {
           show &&
@@ -38,9 +38,3 @@ export default function DetailCity({ src, alt, text, id, admin }) {
     </div>
   );
 }
-
-{/* <Anchor to={'/city/' + id} className="w-[300px] md:w-4/5 flex flex-col items-center p-2 m-2 bg-white">
-<img src={src} alt={alt} />
-<p className="text-[20px]">{text}</p>
-
-</Anchor> */}
