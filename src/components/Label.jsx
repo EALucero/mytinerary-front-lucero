@@ -50,7 +50,7 @@ export default function Label({ options }) {
             {photo && (
                 <img
                     src={photo}
-                    className="h-[50px] w-[50px] object-cover bg-white rounded-xl mx-1 hidden lg:flex"
+                    className="h-[50px] w-[50px] object-cover bg-white rounded-full mx-1 hidden md:flex"
                 />
             )}
         </div>
