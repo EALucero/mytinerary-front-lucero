@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link as Anchor } from "react-router-dom";
+import Google from "./Google";
 
 export default function SignUp({ mail, password, name, lastName, photo, country, func }) {
     const [step, setStep] = useState(0);
@@ -13,12 +14,13 @@ export default function SignUp({ mail, password, name, lastName, photo, country,
                         <p className="text-gray-400">step 1 of 2</p>
                         <h3 className="text-[24px] font-bold">Create account</h3>
                         <div className="flex mt-7 gap-5">
-                            <Anchor to=''>
+                            {/* <Google className="w-[50px]"/> */}
+                            {/* <Anchor to=''>
                                 <img className="w-[50px] rounded-full" src="https://cdn-icons-png.flaticon.com/128/2702/2702602.png" alt="google icon" />
                             </Anchor>
                             <Anchor to=''>
                                 <img className="w-[50px] rounded-full" src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt="facebook icon" />
-                            </Anchor>
+                            </Anchor> */}
                         </div>
                         <div className="inline-flex items-center justify-center w-full">
                             <hr className="w-64 h-px my-8 bg-gray-400 border-0" />
